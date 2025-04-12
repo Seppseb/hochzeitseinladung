@@ -19,7 +19,7 @@ function App() {
 
         <div className="flex items-center justify-center gap-2 text-pink-700">
           <MapPin className="w-6 h-6" />
-          <span className="text-lg">Schloss Hohenzollern, Baden-Württemberg</span>
+          <span className="text-lg">Ort, Bundesland</span>
         </div>
 
         <p className="text-gray-600">
