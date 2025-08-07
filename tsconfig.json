@@ -1,4 +1,11 @@
 {
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "moduleResolution": "nodenext",
+    "skipLibCheck": true,
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
