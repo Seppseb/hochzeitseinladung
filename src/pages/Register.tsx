@@ -7,7 +7,6 @@ export default function Register() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [partner, setPartner] = useState(false);
   const [annotation, setAnnotation] = useState('');
   const [attendance, setAttendance] = useState<'yes' | 'no'>('yes');
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -23,7 +22,6 @@ export default function Register() {
       const payload = {
         firstName: firstName.trim(),
         lastName: lastName.trim(),
-        partner,
         annotation: annotation.trim(),
         attendance: attendance === 'yes',
       };
@@ -59,11 +57,6 @@ export default function Register() {
           <div>
             <label className="block text-sm font-medium">Nachname</label>
             <input value={lastName} onChange={(e) => setLastName(e.target.value)} className="mt-1 w-full border rounded px-3 py-2" />
-          </div>
-
-          <div className="flex items-center gap-3">
-            <input id="partner" type="checkbox" checked={partner} onChange={(e) => setPartner(e.target.checked)} />
-            <label htmlFor="partner">Ich bringe eine Begleitung (+1) mit</label>
           </div>
 
           <div>
