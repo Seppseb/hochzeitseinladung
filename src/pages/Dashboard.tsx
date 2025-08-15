@@ -3,63 +3,33 @@ import { useEffect, useState } from 'react';
 import { API_BASE } from '../config.js';
 import { Signup } from '../types.js';
 
-type FilterState = 'alle' | 'neu' | 'angenommen' | 'abgelehnt' | 'kommt nicht';
-type SortMode = 'none' | 'neu' | 'angenommen' | 'abgelehnt' | 'kommt nicht' | 'alphabet';
+type FilterStatus = 'all' | 'new' | 'accepted' | 'declined';
+type SortMode = 'none' | 'new' | 'accepted' | 'declined' | 'alphabet';
 
 export default function Dashboard() {
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState<string | null>(null);
+  const [authorized, setAuthorized] = useState<boolean>(false);
   const [signups, setSignups] = useState<Signup[]>([]);
   const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState<FilterState>('alle');
+  const [filter, setFilter] = useState<FilterStatus>('all');
   const [sortMode, setSortMode] = useState<SortMode>('none');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // optionally restore token from localStorage
-    const stored = localStorage.getItem('admin_token');
-    if (stored) {
-      setToken(stored);
-      fetchSignups(stored);
-    }
+    
   }, []);
 
-  const login = async () => {
-    setError(null);
-    try {
-      const res = await fetch(`${API_BASE}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
-      if (!res.ok) {
-        setError('Login fehlgeschlagen');
-        return;
-      }
-      const data = await res.json();
-      if (data.token) {
-        setToken(data.token);
-        localStorage.setItem('admin_token', data.token);
-        fetchSignups(data.token);
-      } else {
-        setError('Keine Token erhalten');
-      }
-    } catch (err) {
-      console.error(err);
-      setError('Netzwerkfehler');
-    }
-  };
-
-  const fetchSignups = async (tok?: string) => {
+  const fetchSignups = async () => {
     setLoading(true);
     setError(null);
     try {
-      const used = tok ?? token;
-      const res = await fetch(`${API_BASE}/signups`, {
-        headers: { Authorization: `Bearer ${used}` },
+      const res = await fetch(`${API_BASE}/signup`, {
+        headers: { 'password': password },
       });
       if (!res.ok) throw new Error('Fehler beim Laden');
       const data = await res.json();
+      setAuthorized(true);
       setSignups(data);
     } catch (err) {
       console.error(err);
@@ -69,20 +39,25 @@ export default function Dashboard() {
     }
   };
 
-  const updateState = async (id: string, newState: Signup['state']) => {
-    if (!token) return setError('Nicht eingeloggt');
+  const updateStatus = async (id: string, newStatus: Signup['status']) => {
     try {
-      const res = await fetch(`${API_BASE}/signups/${id}`, {
-        method: 'PATCH',
+      // Create URL with query parameters
+      const url = new URL(`${API_BASE}/signup/status`);
+      url.searchParams.append('id', id);
+      url.searchParams.append('status', newStatus);
+
+      const res = await fetch(url.toString(), {
+        // 1. Method changed from 'PATCH' to 'PUT'
+        method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          // 'Content-Type' is no longer needed as there is no body
+          'password': password
         },
-        body: JSON.stringify({ state: newState }),
+        // 2. Body is removed, data is now in the URL
       });
       if (!res.ok) throw new Error('Update fehlgeschlagen');
       // Optimistisch lokal updaten
-      setSignups((prev) => prev.map((s) => (s.id === id ? { ...s, state: newState } : s)));
+      setSignups((prev) => prev.map((s) => (s.id === id ? { ...s, status: newStatus } : s)));
     } catch (err) {
       console.error(err);
       setError('Update fehlgeschlagen');
@@ -90,14 +65,14 @@ export default function Dashboard() {
   };
 
   // Filter + Sort
-  const stateOrder: Record<string, number> = { neu: 0, angenommen: 1, abgelehnt: 2, 'kommt nicht': 3 };
+  const statusOrder: Record<string, number> = { new: 0, accepted: 1, declined: 2 };
 
   const visible = signups
-    .filter((s) => (filter === 'alle' ? true : s.state === filter))
+    .filter((s) => (filter === 'all' ? true : s.status === filter))
     .sort((a, b) => {
       if (sortMode === 'alphabet') return a.lastName.localeCompare(b.lastName);
       if (sortMode === 'none') return 0;
-      return (stateOrder[a.state] ?? 99) - (stateOrder[b.state] ?? 99);
+      return (statusOrder[a.status] ?? 99) - (statusOrder[b.status] ?? 99);
     });
 
   return (
@@ -105,24 +80,24 @@ export default function Dashboard() {
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
         <h2 className="text-2xl font-semibold mb-4">Admin Dashboard</h2>
 
-        {!token && (
+        {!authorized && (
           <div className="mb-6">
             <p className="mb-2">Bitte Passwort eingeben, um die Anmeldungen abzurufen:</p>
             <div className="flex gap-2">
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border px-3 py-2 rounded" />
-              <button onClick={login} className="bg-blue-600 text-white px-4 py-2 rounded">Login</button>
+              <button onClick={() => fetchSignups()} className="bg-blue-600 text-white px-4 py-2 rounded">Login</button>
             </div>
             {error && <p className="text-red-600 mt-2">{error}</p>}
           </div>
         )}
 
-        {token && (
+        {authorized && (
           <div>
             <div className="flex items-center gap-4 mb-4">
               <button onClick={() => fetchSignups()} className="px-3 py-1 border rounded">Neu laden</button>
               <label>
                 Filter:
-                <select value={filter} onChange={(e) => setFilter(e.target.value as FilterState)} className="ml-2 border rounded px-2 py-1">
+                <select value={filter} onChange={(e) => setFilter(e.target.value as FilterStatus)} className="ml-2 border rounded px-2 py-1">
                   <option value="alle">Alle</option>
                   <option value="neu">Neu</option>
                   <option value="angenommen">Angenommen</option>
@@ -135,7 +110,7 @@ export default function Dashboard() {
                 Sortierung:
                 <select value={sortMode} onChange={(e) => setSortMode(e.target.value as SortMode)} className="ml-2 border rounded px-2 py-1">
                   <option value="none">Keine</option>
-                  <option value="neu">Neu zuerst (state order)</option>
+                  <option value="neu">Neu zuerst (status order)</option>
                   <option value="angenommen">Angenommen zuerst</option>
                   <option value="abgelehnt">Abgelehnt zuerst</option>
                   <option value="kommt nicht">Kommt nicht zuerst</option>
@@ -156,7 +131,7 @@ export default function Dashboard() {
                       <th className="p-2">Partner</th>
                       <th className="p-2">Attendance</th>
                       <th className="p-2">Bemerkung</th>
-                      <th className="p-2">State</th>
+                      <th className="p-2">Status</th>
                       <th className="p-2">Aktionen</th>
                     </tr>
                   </thead>
@@ -168,20 +143,20 @@ export default function Dashboard() {
                         <td className="p-2">{s.partner ? 'Ja' : 'Nein'}</td>
                         <td className="p-2">{s.attendance ? 'Kommt' : 'Kommt nicht'}</td>
                         <td className="p-2">{s.annotation || '-'}</td>
-                        <td className="p-2">{s.state}</td>
+                        <td className="p-2">{s.status}</td>
                         <td className="p-2 space-x-2">
-                          {s.state === 'neu' && s.attendance && (
+                          { s.status != 'outdated' && s.attendance && (
                             <>
-                              <button onClick={() => updateState(s.id, 'angenommen')} className="px-2 py-1 bg-green-600 text-white rounded">Annehmen</button>
-                              <button onClick={() => updateState(s.id, 'abgelehnt')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
+                              <button onClick={() => updateStatus(s.id, 'accepted')} className="px-2 py-1 bg-green-600 text-white rounded">Annehmen</button>
+                              <button onClick={() => updateStatus(s.id, 'declined')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
                             </>
                           )}
 
-                          {s.state === 'neu' && !s.attendance && (
-                            <button onClick={() => updateState(s.id, 'kommt nicht')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
+                          { s.status != 'outdated' && !s.attendance && (
+                            <button onClick={() => updateStatus(s.id, 'declined')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
                           )}
 
-                          {/* allow state change for others as well if needed */}
+                          {/* allow status change for others as well if needed */}
                         </td>
                       </tr>
                     ))}

@@ -1,5 +1,5 @@
 // src/types.ts
-export type SignupState = 'neu' | 'angenommen' | 'abgelehnt' | 'kommt nicht';
+export type SignupStatus = 'new' | 'accepted' | 'declined' | 'outdated';
 
 export interface Signup {
   id: string;
@@ -8,5 +8,5 @@ export interface Signup {
   partner: boolean;
   annotation?: string;
   attendance: boolean; // true = kommt, false = kommt nicht
-  state: SignupState;
+  status: SignupStatus;
 }
