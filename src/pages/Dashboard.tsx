@@ -98,11 +98,10 @@ export default function Dashboard() {
               <label>
                 Filter:
                 <select value={filter} onChange={(e) => setFilter(e.target.value as FilterStatus)} className="ml-2 border rounded px-2 py-1">
-                  <option value="alle">Alle</option>
-                  <option value="neu">Neu</option>
-                  <option value="angenommen">Angenommen</option>
-                  <option value="abgelehnt">Abgelehnt</option>
-                  <option value="kommt nicht">Kommt nicht</option>
+                  <option value="all">Alle</option>
+                  <option value="new">Neu</option>
+                  <option value="accepted">Angenommen</option>
+                  <option value="declined">Abgelehnt</option>
                 </select>
               </label>
 
@@ -110,10 +109,9 @@ export default function Dashboard() {
                 Sortierung:
                 <select value={sortMode} onChange={(e) => setSortMode(e.target.value as SortMode)} className="ml-2 border rounded px-2 py-1">
                   <option value="none">Keine</option>
-                  <option value="neu">Neu zuerst (status order)</option>
-                  <option value="angenommen">Angenommen zuerst</option>
-                  <option value="abgelehnt">Abgelehnt zuerst</option>
-                  <option value="kommt nicht">Kommt nicht zuerst</option>
+                  <option value="new">Neu zuerst (status order)</option>
+                  <option value="accepted">Angenommen zuerst</option>
+                  <option value="declined">Abgelehnt zuerst</option>
                   <option value="alphabet">Nach Nachname</option>
                 </select>
               </label>
@@ -128,11 +126,11 @@ export default function Dashboard() {
                     <tr className="text-left">
                       <th className="p-2">Vorname</th>
                       <th className="p-2">Nachname</th>
-                      <th className="p-2">Partner</th>
                       <th className="p-2">Attendance</th>
                       <th className="p-2">Bemerkung</th>
                       <th className="p-2">Status</th>
                       <th className="p-2">Aktionen</th>
+                      <th className="p-2">Anzahl: {visible.length}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -140,7 +138,6 @@ export default function Dashboard() {
                       <tr key={s.id} className="border-t">
                         <td className="p-2">{s.firstName}</td>
                         <td className="p-2">{s.lastName}</td>
-                        <td className="p-2">{s.partner ? 'Ja' : 'Nein'}</td>
                         <td className="p-2">{s.attendance ? 'Kommt' : 'Kommt nicht'}</td>
                         <td className="p-2">{s.annotation || '-'}</td>
                         <td className="p-2">{s.status}</td>
