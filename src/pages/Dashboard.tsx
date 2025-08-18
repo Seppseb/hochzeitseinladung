@@ -16,8 +16,12 @@ export default function Dashboard() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // optionally restore token from localStorage
-    
+    // Load saved password on mount
+    const savedPassword = localStorage.getItem("wedding_admin_password");
+    if (savedPassword) {
+      setPassword(savedPassword);
+      fetchSignups();
+    }
   }, []);
 
   const fetchSignups = async () => {
@@ -31,6 +35,7 @@ export default function Dashboard() {
       const data = await res.json();
       setAuthorized(true);
       setSignups(data);
+      localStorage.setItem("wedding_admin_password", password);
     } catch (err) {
       console.error(err);
       setError('Konnte Einträge nicht laden');
@@ -83,97 +88,135 @@ export default function Dashboard() {
     });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
-        <h2 className="text-2xl font-semibold mb-4">Admin Dashboard</h2>
+    <div className="min-h-screen bg-lavender-light flex items-start justify-center p-6">
+  <div className="w-full max-w-6xl bg-white shadow-2xl rounded-2xl p-8">
+    <h2 className="text-3xl font-heading text-lavender-dark mb-6 text-center">Admin Dashboard</h2>
 
-        {!authorized && (
-          <div className="mb-6">
-            <p className="mb-2">Bitte Passwort eingeben, um die Anmeldungen abzurufen:</p>
-            <div className="flex gap-2">
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border px-3 py-2 rounded" />
-              <button onClick={() => fetchSignups()} className="bg-blue-600 text-white px-4 py-2 rounded">Login</button>
-            </div>
-            {error && <p className="text-red-600 mt-2">{error}</p>}
-          </div>
-        )}
-
-        {authorized && (
-          <div>
-            <div className="flex items-center gap-4 mb-4">
-              <button onClick={() => fetchSignups()} className="px-3 py-1 border rounded">Neu laden</button>
-              <label>
-                Filter:
-                <select value={filter} onChange={(e) => setFilter(e.target.value as FilterStatus)} className="ml-2 border rounded px-2 py-1">
-                  <option value="all">Alle</option>
-                  <option value="new">Neu</option>
-                  <option value="accepted">Angenommen</option>
-                  <option value="declined">Abgelehnt</option>
-                </select>
-              </label>
-
-              <label>
-                Sortierung:
-                <select value={sortMode} onChange={(e) => setSortMode(e.target.value as SortMode)} className="ml-2 border rounded px-2 py-1">
-                  <option value="none">Keine</option>
-                  <option value="new">Neu zuerst (unbearbeitet)</option>
-                  <option value="accepted">Angenommen zuerst</option>
-                  <option value="declined">Abgelehnt zuerst</option>
-                  <option value="alphabet">Nach Nachname</option>
-                </select>
-              </label>
-            </div>
-
-            {loading ? (
-              <p>Lädt…</p>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full table-auto border-collapse">
-                  <thead>
-                    <tr className="text-left">
-                      <th className="p-2">Vorname</th>
-                      <th className="p-2">Nachname</th>
-                      <th className="p-2">Attendance</th>
-                      <th className="p-2">Bemerkung</th>
-                      <th className="p-2">Status</th>
-                      <th className="p-2">Aktionen</th>
-                      <th className="p-2">Anzahl: {visible.length}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {visible.map((s) => (
-                      <tr key={s.id} className="border-t">
-                        <td className="p-2">{s.firstName}</td>
-                        <td className="p-2">{s.lastName}</td>
-                        <td className="p-2">{s.attendance ? 'Kommt' : 'Kommt nicht'}</td>
-                        <td className="p-2">{s.annotation || '-'}</td>
-                        <td className="p-2">{statusTranslation[s.status]}</td>
-                        <td className="p-2 space-x-2">
-                          { s.status != 'outdated' && s.attendance && (
-                            <>
-                              <button onClick={() => updateStatus(s.id, 'accepted')} className="px-2 py-1 bg-green-600 text-white rounded">Annehmen</button>
-                              <button onClick={() => updateStatus(s.id, 'declined')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
-                            </>
-                          )}
-
-                          { s.status != 'outdated' && !s.attendance && (
-                            <button onClick={() => updateStatus(s.id, 'declined')} className="px-2 py-1 bg-red-600 text-white rounded">Ablehnen</button>
-                          )}
-
-                          {/* allow status change for others as well if needed */}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {visible.length === 0 && <p className="mt-4">Keine Einträge angezeigt.</p>}
-              </div>
-            )}
-
-            {error && <p className="text-red-600 mt-3">{error}</p>}
-          </div>
-        )}
+    {!authorized && (
+      <div className="mb-6 text-center">
+        <p className="mb-4 text-gray-600">Bitte Passwort eingeben, um die Anmeldungen abzurufen:</p>
+        <div className="flex gap-2 justify-center">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Passwort"
+            className="w-64 px-4 py-2 border border-lavender rounded-full focus:outline-none focus:ring-2 focus:ring-lavender-dark"
+          />
+          <button
+            onClick={() => fetchSignups()}
+            className="bg-lavender hover:bg-lavender-dark text-white px-6 py-2 rounded-full transition-colors"
+          >
+            Login
+          </button>
+        </div>
+        {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
       </div>
-    </div>
+    )}
+
+    {authorized && (
+      <div>
+        <div className="flex flex-wrap items-center gap-4 mb-6">
+          <button
+            onClick={() => fetchSignups()}
+            className="px-4 py-2 border border-lavender rounded-full text-lavender-dark hover:bg-lavender-light"
+          >
+            Neu laden
+          </button>
+
+          <label className="flex items-center gap-2">
+            <span className="text-gray-600">Filter:</span>
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value as FilterStatus)}
+              className="border border-lavender rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lavender-dark"
+            >
+              <option value="all">Alle</option>
+              <option value="new">Neu</option>
+              <option value="accepted">Angenommen</option>
+              <option value="declined">Abgelehnt</option>
+            </select>
+          </label>
+
+          <label className="flex items-center gap-2">
+            <span className="text-gray-600">Sortierung:</span>
+            <select
+              value={sortMode}
+              onChange={(e) => setSortMode(e.target.value as SortMode)}
+              className="border border-lavender rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lavender-dark"
+            >
+              <option value="none">Keine</option>
+              <option value="new">Neu zuerst</option>
+              <option value="accepted">Angenommen zuerst</option>
+              <option value="declined">Abgelehnt zuerst</option>
+              <option value="alphabet">Nach Nachname</option>
+            </select>
+          </label>
+        </div>
+
+        {loading ? (
+          <p className="text-gray-600">Lädt…</p>
+        ) : (
+          <div className="overflow-x-auto rounded-xl border border-lavender-light shadow">
+            <table className="w-full table-auto border-collapse">
+              <thead className="bg-lavender-light">
+                <tr className="text-left text-lavender-dark">
+                  <th className="p-3">Vorname</th>
+                  <th className="p-3">Nachname</th>
+                  <th className="p-3">Attendance</th>
+                  <th className="p-3">Bemerkung</th>
+                  <th className="p-3">Status</th>
+                  <th className="p-3">Aktionen</th>
+                  <th className="p-3">Anzahl: {visible.length}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visible.map((s) => (
+                  <tr key={s.id} className="border-t hover:bg-lavender-light/30">
+                    <td className="p-3">{s.firstName}</td>
+                    <td className="p-3">{s.lastName}</td>
+                    <td className="p-3">{s.attendance ? 'Kommt' : 'Kommt nicht'}</td>
+                    <td className="p-3">{s.annotation || '-'}</td>
+                    <td className="p-3">{statusTranslation[s.status]}</td>
+                    <td className="p-3 space-x-2">
+                      {s.status !== 'outdated' && s.attendance && (
+                        <>
+                          <button
+                            onClick={() => updateStatus(s.id, 'accepted')}
+                            className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded-full"
+                          >
+                            Annehmen
+                          </button>
+                          <button
+                            onClick={() => updateStatus(s.id, 'declined')}
+                            className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-full"
+                          >
+                            Ablehnen
+                          </button>
+                        </>
+                      )}
+                      {s.status !== 'outdated' && !s.attendance && (
+                        <button
+                          onClick={() => updateStatus(s.id, 'declined')}
+                          className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-full"
+                        >
+                          Ablehnen
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {visible.length === 0 && <p className="mt-4 text-center text-gray-600">Keine Einträge angezeigt.</p>}
+          </div>
+        )}
+
+        {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
+      </div>
+    )}
+  </div>
+</div>
+
   );
 }

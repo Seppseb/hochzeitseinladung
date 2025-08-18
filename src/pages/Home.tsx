@@ -1,42 +1,64 @@
 // src/pages/Home.tsx
-import { CalendarHeart, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import WeddingContent from '../components/WeddingContent.js'; // Import the new component
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-pink-50 flex items-center justify-center p-6">
-      <div className="max-w-2xl w-full shadow-2xl rounded-2xl p-6 bg-white text-center space-y-6">
-        <h1 className="text-4xl font-bold text-pink-700">Einladung zur Hochzeit</h1>
-        <p className="text-xl text-gray-700">
-          Wir, <strong>Melina Thielen</strong> &amp; <strong>Fabio Müller</strong>, laden euch herzlich ein, diesen besonderen Tag mit uns zu feiern.
-        </p>
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-        <div className="flex items-center justify-center gap-2 text-pink-700">
-          <CalendarHeart className="w-6 h-6" />
-          <span className="text-lg">20. Juni 2026</span>
+  const correctPassword = "test"; 
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === correctPassword) {
+      localStorage.setItem("wedding_password", password);
+      setIsAuthenticated(true);
+    } else {
+      setError('Falsches Passwort. Bitte versucht es erneut.');
+    }
+  };
+
+  useEffect(() => {
+    // Load saved password on mount
+    const savedPassword = localStorage.getItem("wedding_password");
+    if (savedPassword) {
+      setPassword(savedPassword);
+      if (savedPassword === correctPassword) {
+        setIsAuthenticated(true);
+      } else {
+        localStorage.removeItem("wedding_password");
+      }
+    }
+  }, []);
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-lavender-light flex items-center justify-center p-6">
+        <div className="max-w-md w-full shadow-2xl rounded-2xl p-8 bg-white text-center">
+          <h1 className="text-3xl font-heading text-lavender-dark">Einladung zur Hochzeit</h1>
+          <p className="mt-4 text-gray-600">Bitte gebt das Passwort ein, um die Details zu sehen.</p>
+          <form onSubmit={handlePasswordSubmit} className="mt-6 space-y-4">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Passwort"
+              className="w-full px-4 py-2 border border-lavender rounded-full focus:outline-none focus:ring-2 focus:ring-lavender-dark"
+            />
+            <button
+              type="submit"
+              className="w-full bg-lavender hover:bg-lavender-dark text-white text-lg px-6 py-2 rounded-full transition-colors"
+            >
+              Enter
+            </button>
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          </form>
         </div>
-
-        <div className="flex items-center justify-center gap-2 text-pink-700">
-          <MapPin className="w-6 h-6" />
-          <span className="text-lg">Ort, Rheinland-Pfalz</span>
-        </div>
-
-        <p className="text-gray-600">
-          Die Zeremonie beginnt um 14:00 Uhr, gefolgt von einer festlichen Feier mit Essen, Musik und Tanz.
-        </p>
-
-        <p className="text-gray-600">
-          Bitte gebt uns bis zum <strong>20. Mai 2026</strong> Bescheid, ob ihr dabei seid.
-        </p>
-
-        <br/>
-
-        <Link to="/register">
-          <button className="bg-pink-600 hover:bg-pink-700 text-white text-lg px-6 py-2 rounded-full">
-            Rückmeldung senden
-          </button>
-        </Link>
       </div>
-    </div>
-  );
+    );
+  }
+
+  // If authenticated, show the main wedding content
+  return <WeddingContent />;
 }
