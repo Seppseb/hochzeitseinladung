@@ -64,6 +64,13 @@ export default function Dashboard() {
     }
   };
 
+  const statusTranslation = {
+    "new": "neu",
+    "accepted": "angenommen",
+    "declined": "abgelehnt",
+    "outdated": "alt",
+  };
+
   // Filter + Sort
   const statusOrder: Record<string, number> = { new: 0, accepted: 1, declined: 2 };
 
@@ -109,7 +116,7 @@ export default function Dashboard() {
                 Sortierung:
                 <select value={sortMode} onChange={(e) => setSortMode(e.target.value as SortMode)} className="ml-2 border rounded px-2 py-1">
                   <option value="none">Keine</option>
-                  <option value="new">Neu zuerst (status order)</option>
+                  <option value="new">Neu zuerst (unbearbeitet)</option>
                   <option value="accepted">Angenommen zuerst</option>
                   <option value="declined">Abgelehnt zuerst</option>
                   <option value="alphabet">Nach Nachname</option>
@@ -140,7 +147,7 @@ export default function Dashboard() {
                         <td className="p-2">{s.lastName}</td>
                         <td className="p-2">{s.attendance ? 'Kommt' : 'Kommt nicht'}</td>
                         <td className="p-2">{s.annotation || '-'}</td>
-                        <td className="p-2">{s.status}</td>
+                        <td className="p-2">{statusTranslation[s.status]}</td>
                         <td className="p-2 space-x-2">
                           { s.status != 'outdated' && s.attendance && (
                             <>
