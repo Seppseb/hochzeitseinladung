@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Swiper navigation buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #C8A2C8; /* example lavender-dark */
+  transition: color 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #e7d7f4; /* darker lavender on hover */
+}
+/* Pagination bullets */
+.swiper-pagination-bullet {
+    background-color: #C8A2C8; /* lavender-light */
+    opacity: 1;               /* ensure they're not faded */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .swiper-pagination-bullet:hover {
+    background-color: #C8A2C8; /* medium lavender */
+    transform: scale(1.2);
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #967BB6; /* lavender-dark */
+  }
+  

@@ -7,7 +7,7 @@ type FilterStatus = 'all' | 'new' | 'accepted' | 'declined';
 type SortMode = 'none' | 'new' | 'accepted' | 'declined' | 'alphabet';
 
 export default function Dashboard() {
-  const [password, setPassword] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [authorized, setAuthorized] = useState<boolean>(false);
   const [signups, setSignups] = useState<Signup[]>([]);
   const [loading, setLoading] = useState(false);
@@ -18,24 +18,25 @@ export default function Dashboard() {
   useEffect(() => {
     // Load saved password on mount
     const savedPassword = localStorage.getItem("wedding_admin_password");
-    if (savedPassword) {
-      setPassword(savedPassword);
-      fetchSignups();
+    if (savedPassword && savedPassword != "") {
+      setAdminPassword(savedPassword);
+      fetchSignups(savedPassword);
     }
   }, []);
 
-  const fetchSignups = async () => {
+  const fetchSignups = async (savedPassword?: string) => {
     setLoading(true);
     setError(null);
+    const usedPassword: string = savedPassword && savedPassword != "" ? savedPassword : adminPassword; 
     try {
       const res = await fetch(`${API_BASE}/signup`, {
-        headers: { 'password': password },
+        headers: { 'password': usedPassword },
       });
       if (!res.ok) throw new Error('Fehler beim Laden');
       const data = await res.json();
       setAuthorized(true);
       setSignups(data);
-      localStorage.setItem("wedding_admin_password", password);
+      localStorage.setItem("wedding_admin_password", usedPassword);
     } catch (err) {
       console.error(err);
       setError('Konnte Einträge nicht laden');
@@ -56,7 +57,7 @@ export default function Dashboard() {
         method: 'PUT',
         headers: {
           // 'Content-Type' is no longer needed as there is no body
-          'password': password
+          'password': adminPassword
         },
         // 2. Body is removed, data is now in the URL
       });
@@ -87,10 +88,22 @@ export default function Dashboard() {
       return (statusOrder[a.status] ?? 99) - (statusOrder[b.status] ?? 99);
     });
 
+    function formatDate(isoString: string): string {
+      const date = new Date(isoString);
+      
+      return new Intl.DateTimeFormat("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(date);
+    }
+
   return (
     <div className="min-h-screen bg-lavender-light flex items-start justify-center p-6">
   <div className="w-full max-w-6xl bg-white shadow-2xl rounded-2xl p-8">
-    <h2 className="text-3xl font-heading text-lavender-dark mb-6 text-center">Admin Dashboard</h2>
+    <h2 className="text-3xl font-playfair text-lavender-dark mb-6 text-center">Admin Dashboard</h2>
 
     {!authorized && (
       <div className="mb-6 text-center">
@@ -98,8 +111,8 @@ export default function Dashboard() {
         <div className="flex gap-2 justify-center">
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={adminPassword}
+            onChange={(e) => setAdminPassword(e.target.value)}
             placeholder="Passwort"
             className="w-64 px-4 py-2 border border-lavender rounded-full focus:outline-none focus:ring-2 focus:ring-lavender-dark"
           />
@@ -152,6 +165,7 @@ export default function Dashboard() {
               <option value="alphabet">Nach Nachname</option>
             </select>
           </label>
+          <p className="text-gray-600">Anzahl: {visible.length}</p>
         </div>
 
         {loading ? (
@@ -167,7 +181,8 @@ export default function Dashboard() {
                   <th className="p-3">Bemerkung</th>
                   <th className="p-3">Status</th>
                   <th className="p-3">Aktionen</th>
-                  <th className="p-3">Anzahl: {visible.length}</th>
+                  <th className="p-3">Eingegangen</th>
+                  <th className="p-3">Bearbeitet</th>
                 </tr>
               </thead>
               <tbody>
@@ -204,6 +219,8 @@ export default function Dashboard() {
                         </button>
                       )}
                     </td>
+                    <td className="p-3">{formatDate(s.createdAt)}</td>
+                    <td className="p-3">{formatDate(s.lastChangedAt)}</td>
                   </tr>
                 ))}
               </tbody>

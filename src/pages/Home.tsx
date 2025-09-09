@@ -41,7 +41,7 @@ export default function Home() {
   useEffect( () => {
     // Load saved password on mount
     const savedPassword = localStorage.getItem("wedding_password");
-    if (savedPassword) {
+    if (savedPassword && savedPassword != "") {
       setPassword(savedPassword);
       checkPassword(savedPassword);
     }
@@ -51,7 +51,7 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-lavender-light flex items-center justify-center p-6">
         <div className="max-w-md w-full shadow-2xl rounded-2xl p-8 bg-white text-center">
-          <h1 className="text-3xl font-heading text-lavender-dark">Einladung zur Hochzeit</h1>
+          <h1 className="text-3xl font-playfair text-lavender-dark">Einladung zur Hochzeit</h1>
           <p className="mt-4 text-gray-600">Bitte gebt das Passwort ein, um die Details zu sehen.</p>
           <form onSubmit={handlePasswordSubmit} className="mt-6 space-y-4">
             <input

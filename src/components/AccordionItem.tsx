@@ -28,6 +28,16 @@ export default function AccordionItem({ question, answer }: AccordionItemProps) 
       >
         <p className="p-4 text-gray-600 bg-lavender-light/30 rounded-b-lg">
           {answer}
+          {(() => {
+          if (question.includes("Dresscode")) {
+            return (
+              <div className="flex gap-3 mt-4">
+                <div className="w-8 h-8 rounded-full bg-wedding-lavender shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-wedding-lemon shadow-md"></div>
+              </div>
+            )
+          }
+        })()}
         </p>
       </div>
     </div>

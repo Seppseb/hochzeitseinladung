@@ -12,9 +12,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import fabmelring from '../assets/fabmelring.jpg'; // with import
-import luca from '../assets/lucaq.jpg'; // with import
-import piedmont from '../assets/piedmont.jpg'; // with import
+import fabmelring from '../assets/fabmelring.jpg';
+import luca from '../assets/lucaq.jpg';
+import piedmont from '../assets/piedmont.jpg';
+import fabio from '../assets/fabio.jpg';
+import fabmel1 from '../assets/fabmel1.jpg';
+import fabmel2 from '../assets/fabmel2.jpg';
+import fabmel3 from '../assets/fabmel3.jpg';
+import fabmelcol1 from '../assets/fabmelcol1.jpg';
+import fabmelcol2 from '../assets/fabmelcol2.jpg';
+import fabmelcol3 from '../assets/fabmelcol3.jpg';
+import trauzeugin1 from '../assets/trauzeugin1q.jpg';
+import trauzeugin2 from '../assets/trauzeugin2q.jpg';
 import { Link } from 'react-router-dom';
 
 
@@ -28,16 +37,15 @@ export default function WeddingContent() {
   const schedule = [
     { time: "15:00 Uhr", event: "Trauung" },
     { time: "16:00 Uhr", event: "Sektempfang & Fotos" },
-    { time: "17:00 Uhr", event: "Kaffee & Kuchen" },
+    { time: "17:00 Uhr", event: "Kaffee & Kuchen", img: fabio },
     { time: "19:00 Uhr", event: "Abendessen" },
     { time: "21:00 Uhr", event: "Party & Tanz in Temmels" },
   ];
 
   const groomsmen = [
     { name: "Luca Müller", role: "Trauzeuge", img: luca },
-    { name: "Luca Müller", role: "Trauzeuge", img: luca },
-    { name: "Luca Müller", role: "Trauzeuge", img: luca },
-    { name: "Luca Müller", role: "Trauzeuge", img: luca },
+    { name: "Paulina Marks", role: "Trauzeugin", img: trauzeugin1 },
+    { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2 },
     //{ name: "Erika Mustermann", role: "Trauzeugin", img: "https://via.placeholder.com/150" },
     //{ name: "John Doe", role: "Groomsman", img: "https://via.placeholder.com/150" },
     //{ name: "Jane Doe", role: "Bridesmaid", img: "https://via.placeholder.com/150" },
@@ -45,35 +53,60 @@ export default function WeddingContent() {
 
   return (
     <div className="bg-white">
-      {/* 1. HERO SECTION (Video or Photo Background) */}
-      <div className="relative h-screen flex items-center justify-center text-center text-white bg-gray-500">
-          {/* Placeholder for video/image background */}
-          <div className="absolute inset-0 bg-black opacity-40"></div>
-          <img src={fabmelring} 
-               alt="Melina und Fabio" 
-               className="absolute inset-0 w-full h-full object-cover"/>
-          <div className="relative z-10 p-6 bg-black/30 rounded-xl backdrop-blur-sm">
-              <h1 className="text-5xl md:text-7xl font-heading">Melina & Fabio</h1>
-              <p className="mt-4 text-2xl font-light">sagen JA!</p>
-              <p className="mt-2 text-lg">20. Juni 2026 | Weingut Piedmont, Konz-Filzen</p>
-          </div>
-      </div>
+      {/* NEW TOP SECTION */}
+      <Section className="text-center">
+        <h1 className="text-4xl md:text-6xl font-playfair text-lavender-dark mb-10">
+          Melina & Fabio
+        </h1>
+
+        {/* 3 images side by side */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <img
+            src={fabmel1}
+            alt="Bild 1"
+            className="rounded-2xl shadow-xl object-cover w-full h-80"
+          />
+          <img
+            src={fabmel2}
+            alt="Bild 2"
+            className="rounded-2xl shadow-xl object-cover w-full h-80"
+          />
+          <img
+            src={fabmel3}
+            alt="Bild 3"
+            className="rounded-2xl shadow-xl object-cover w-full h-80"
+          />
+        </div>
+
+        {/* Text under images */}
+        <p className="mt-4 text-2xl text-gray-700">sagen JA!</p>
+        <p className="mt-2 text-lg text-gray-700">20. Juni 2026 | Weingut Piedmont, Konz-Filzen</p>
+        <p className="max-w-3xl mx-auto text-lg text-gray-700">
+          Wir freuen uns riesig, diesen besonderen Tag mit euch zu feiern. Auf
+          dieser Seite findet ihr alle Infos zu Ablauf, Location und Rückmeldung.
+        </p>
+      </Section>
 
       <main>
         {/* COUNTDOWN & WELCOME */}
         <Section>
             <Countdown />
             <div className="mt-12 text-center max-w-3xl mx-auto">
-                <h2 className="text-3xl font-heading text-lavender-dark">Willkommen!</h2>
+                <h2 className="text-3xl font-playfair text-lavender-dark">Willkommen!</h2>
                 <p className="mt-4 text-gray-700">
-                    Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. Hier findet ihr alle wichtigen Informationen rund um unsere Hochzeit. Bei Fragen könnt ihr uns jederzeit erreichen unter: <strong className="text-lavender-dark">0123 / 4567890</strong>.
+                    Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. 
+                    Hier findet ihr alle wichtigen Informationen rund um unsere Hochzeit. 
+                    Bei Fragen könnt ihr uns jederzeit erreichen unter:{' '}
+                    <a href="tel:01234567890" className="text-lavender-dark font-semibold hover:underline">
+                        0123 / 4567890
+                    </a>.
                 </p>
             </div>
         </Section>
         
         {/* BILDERGALERIE SWIPER */}
         <Section className="bg-lemon-light">
-             <h2 className="text-3xl font-heading text-center text-lavender-dark mb-8">Unsere Momente</h2>
+             <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Momente</h2>
              <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}
@@ -88,15 +121,15 @@ export default function WeddingContent() {
                 }}
              >
                 <SwiperSlide><img src={fabmelring} alt="Gallery 1" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelring} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelring} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelring} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmelcol1} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmelcol2} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmelcol3} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
              </Swiper>
         </Section>
 
         {/* TAGESABLAUF SWIPER */}
         <Section>
-            <h2 className="text-3xl font-heading text-center text-lavender-dark mb-8">Tagesablauf</h2>
+            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Tagesablauf</h2>
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
@@ -109,11 +142,18 @@ export default function WeddingContent() {
             >
                 {schedule.map((item, index) => (
                     <SwiperSlide key={index} className="text-center">
-                        <div className="p-6 border border-lavender rounded-lg bg-lavender-light/30">
-                            <p className="font-bold text-lg text-lavender-dark">{item.time}</p>
-                            <p className="text-gray-700">{item.event}</p>
-                        </div>
-                    </SwiperSlide>
+                    <div className="p-6 border border-lavender rounded-lg bg-lavender-light/30">
+                      {item.img && (
+                        <img
+                          src={item.img}
+                          alt={item.event}
+                          className="w-full h-32 object-cover rounded-lg mb-4"
+                        />
+                      )}
+                      <p className="font-bold text-lg text-lavender-dark">{item.time}</p>
+                      <p className="text-gray-700">{item.event}</p>
+                    </div>
+                  </SwiperSlide>
                 ))}
             </Swiper>
         </Section>
@@ -122,7 +162,7 @@ export default function WeddingContent() {
         <Section className="bg-lavender-light/30">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 className="text-3xl font-heading text-lavender-dark mb-4">Die Location</h2>
+                    <h2 className="text-3xl font-playfair text-lavender-dark mb-4">Die Location</h2>
                     <p className="text-gray-700 mb-4">
                         Unsere Feier findet im wunderschönen Weingut "Piedmont" statt. Es bietet eine idyllische Kulisse für einen unvergesslichen Tag.
                     </p>
@@ -151,7 +191,7 @@ export default function WeddingContent() {
 
         {/* TRAUZEUGEN */}
         <Section>
-            <h2 className="text-3xl font-heading text-center text-lavender-dark mb-8">Unsere Trauzeugen & Helfer</h2>
+            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Trauzeugen & Helfer</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 {groomsmen.map((person, index) => (
                     <div key={index}>
@@ -165,7 +205,7 @@ export default function WeddingContent() {
 
         {/* ZU- ODER ABSAGE */}
         <Section className="bg-lemon-light text-center">
-            <h2 className="text-3xl font-heading text-lavender-dark">Wir freuen uns auf euch!</h2>
+            <h2 className="text-3xl font-playfair text-lavender-dark">Wir freuen uns auf euch!</h2>
             <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
                 Bitte gebt uns bis zum 20. Mai 2026 Bescheid, ob ihr dabei sein könnt, damit wir besser planen können.
             </p>
@@ -178,7 +218,7 @@ export default function WeddingContent() {
 
         {/* HÄUFIG GESTELLTE FRAGEN */}
         <Section>
-            <h2 className="text-3xl font-heading text-center text-lavender-dark mb-8">Häufig gestellte Fragen</h2>
+            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Häufig gestellte Fragen</h2>
             <div className="max-w-3xl mx-auto">
                 <AccordionItem 
                     question="Was ist der Dresscode?" 

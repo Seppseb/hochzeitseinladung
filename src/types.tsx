@@ -8,4 +8,6 @@ export interface Signup {
   annotation?: string;
   attendance: boolean; // true = kommt, false = kommt nicht
   status: SignupStatus;
+  createdAt: string;
+  lastChangedAt: string;
 }
