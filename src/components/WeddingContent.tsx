@@ -12,6 +12,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import antrag from '../assets/antrag.mp4';
+
 import fabmelring from '../assets/fabmelring.jpg';
 import luca from '../assets/lucaq.jpg';
 import piedmont from '../assets/piedmont.jpg';
@@ -19,6 +21,17 @@ import fabio from '../assets/fabio.jpg';
 import fabmel1 from '../assets/fabmel1.jpg';
 import fabmel2 from '../assets/fabmel2.jpg';
 import fabmel3 from '../assets/fabmel3.jpg';
+import fabmel4 from '../assets/fabmel4.jpg';
+import fabmel5 from '../assets/fabmel5.jpg';
+import fabmel6 from '../assets/fabmel6.jpg';
+import fabmel7 from '../assets/fabmel7.jpg';
+import fabmel8 from '../assets/fabmel8.jpg';
+import fabmel9 from '../assets/fabmel9.jpg';
+import fabmel10 from '../assets/fabmel10.jpg';
+import fabmel11 from '../assets/fabmel11.jpg';
+import fabmel12 from '../assets/fabmel12.jpg';
+import fabmel13 from '../assets/fabmel13.jpg';
+import fabmel14 from '../assets/fabmel14.jpg';
 import fabmelcol1 from '../assets/fabmelcol1.jpg';
 import fabmelcol2 from '../assets/fabmelcol2.jpg';
 import fabmelcol3 from '../assets/fabmelcol3.jpg';
@@ -44,7 +57,7 @@ export default function WeddingContent() {
 
   const groomsmen = [
     { name: "Luca Müller", role: "Trauzeuge", img: luca },
-    { name: "Paulina Marks", role: "Trauzeugin", img: trauzeugin1 },
+    { name: "Paulina Mirkes", role: "Trauzeugin", img: trauzeugin1 },
     { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2 },
     //{ name: "Erika Mustermann", role: "Trauzeugin", img: "https://via.placeholder.com/150" },
     //{ name: "John Doe", role: "Groomsman", img: "https://via.placeholder.com/150" },
@@ -120,10 +133,36 @@ export default function WeddingContent() {
                     1024: { slidesPerView: 3 },
                 }}
              >
+                <SwiperSlide>
+                  <video
+                    src={antrag}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="rounded-lg shadow-lg w-full h-auto object-cover"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </SwiperSlide>
                 <SwiperSlide><img src={fabmelring} alt="Gallery 1" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmelcol1} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmelcol2} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmelcol3} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel1} alt="Gallery 5" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel2} alt="Gallery 6" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel3} alt="Gallery 7" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel4} alt="Gallery 8" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel5} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel6} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel7} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel8} alt="Gallery 12" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel9} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel10} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel11} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel12} alt="Gallery 16" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel13} alt="Gallery 17" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide><img src={fabmel14} alt="Gallery 18" className="rounded-lg shadow-lg"/></SwiperSlide>
              </Swiper>
         </Section>
 
