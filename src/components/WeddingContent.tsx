@@ -73,23 +73,24 @@ export default function WeddingContent() {
         </h1>
 
         {/* 3 images side by side */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <img
-            src={fabmel1}
-            alt="Bild 1"
-            className="rounded-2xl shadow-xl object-cover w-full h-80"
-          />
-          <img
-            src={fabmel2}
-            alt="Bild 2"
-            className="rounded-2xl shadow-xl object-cover w-full h-80"
-          />
-          <img
-            src={fabmel3}
-            alt="Bild 3"
-            className="rounded-2xl shadow-xl object-cover w-full h-80"
-          />
-        </div>
+        <div className="grid grid-cols-3 gap-6 mb-10">
+        <img
+          src={fabmel1}
+          alt="Bild 1"
+          className="rounded-2xl shadow-xl object-contain w-full"
+        />
+        <img
+          src={fabmel2}
+          alt="Bild 2"
+          className="rounded-2xl shadow-xl object-contain w-full"
+        />
+        <img
+          src={fabmel3}
+          alt="Bild 3"
+          className="rounded-2xl shadow-xl object-contain w-full"
+        />
+      </div>
+
 
         {/* Text under images */}
         <p className="mt-4 text-2xl text-gray-700">sagen JA!</p>
