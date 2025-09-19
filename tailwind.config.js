@@ -32,10 +32,9 @@ export default {
         }
       },
       fontFamily: {
-        // You can add custom fonts here later, e.g., a nice script font for headings
-        'heading': ['"Playfair Display"', 'serif'],
-        'body': ['"Lato"', 'sans-serif'],
-        playfair: ['Playfair Display', 'serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        heading: ['"Playfair Display"', 'serif'],
+        body: ['"Lato"', 'sans-serif'],
       }
     },
   },

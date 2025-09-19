@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    const weddingDate = new Date('2026-06-20T15:00:00'); // June 20, 2026, 15:00
+    const weddingDate = new Date('2026-09-05T14:00:00'); //5. september
     const difference = +weddingDate - +new Date();
     let timeLeft = {};
 

@@ -16,7 +16,8 @@ import antrag from '../assets/antrag.mp4';
 
 import fabmelring from '../assets/fabmelring.jpg';
 import luca from '../assets/lucaq.jpg';
-import piedmont from '../assets/piedmont.jpg';
+//import piedmont from '../assets/piedmont.jpg';
+import location from '../assets/location.jpg';
 //import fabio from '../assets/fabio.jpg';
 import fabmel1 from '../assets/fabmel1.jpg';
 import fabmel2 from '../assets/fabmel2.jpg';
@@ -32,8 +33,14 @@ import fabmel11 from '../assets/fabmel11.jpg';
 import fabmel12 from '../assets/fabmel12.jpg';
 import fabmel13 from '../assets/fabmel13.jpg';
 import fabmel14 from '../assets/fabmel14.jpg';
-import fabmelcol1 from '../assets/fabmelcol1.jpg';
-import fabmelcol2 from '../assets/fabmelcol2.jpg';
+import fabmel15 from '../assets/fabmel15.jpg';
+import fabmel16 from '../assets/fabmel16.jpg';
+import fabmel17 from '../assets/fabmel17.jpg';
+import fabmel18 from '../assets/fabmel18.jpg';
+import fabmel19 from '../assets/fabmel19.jpg';
+import fabmel20 from '../assets/fabmel20.jpg';
+//import fabmelcol1 from '../assets/fabmelcol1.jpg';
+//import fabmelcol2 from '../assets/fabmelcol2.jpg';
 import fabmelcol3 from '../assets/fabmelcol3.jpg';
 import trauzeugin1 from '../assets/trauzeugin1q.jpg';
 import trauzeugin2 from '../assets/trauzeugin2q.jpg';
@@ -49,9 +56,9 @@ const Section = ({ children, className = '' }: { children: React.ReactNode, clas
 export default function WeddingContent() {
 
   const groomsmen = [
-    { name: "Luca Müller", role: "Trauzeuge", img: luca, phone:"0123 / 4567890" },
-    { name: "Paulina Mirkes", role: "Trauzeugin", img: trauzeugin1, phone:"0123 / 4567890" },
-    { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2, phone:"0123 / 4567890" },
+    { name: "Luca Müller", role: "Trauzeuge", img: luca, phone:"+49 159 02258054" },
+    { name: "Paulina Mirkes", role: "Trauzeugin", img: trauzeugin1, phone:"+49 151 59924026" },
+    { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2, phone:"+49 160 91222282" },
     //{ name: "Erika Mustermann", role: "Trauzeugin", img: "https://via.placeholder.com/150" },
     //{ name: "John Doe", role: "Groomsman", img: "https://via.placeholder.com/150" },
     //{ name: "Jane Doe", role: "Bridesmaid", img: "https://via.placeholder.com/150" },
@@ -61,10 +68,16 @@ export default function WeddingContent() {
     <div className="bg-white">
       {/* NEW TOP SECTION */}
       <Section className="text-center px-0 sm:px-2 md:px-4">
-        <h1 className="text-4xl md:text-6xl font-playfair text-lavender-dark mb-10">
+        <h1 className="text-4xl md:text-6xl font-playfair font-bold text-lavender-dark mb-10">
           Melina & Fabio
         </h1>
 
+        <h2 className="mt-4 text-2xl md:text-3xl font-playfair text-lavender-dark">
+          Zwei Herzen, ein Ja
+        </h2>
+
+
+        
         {/* Edge-to-edge on mobile, padded on desktop */}
         <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:static md:w-auto md:mx-0">
         <div className="grid grid-cols-3 gap-0.5 mb-10">
@@ -88,31 +101,32 @@ export default function WeddingContent() {
 
 
         {/* Text under images */}
-        <p className="mt-4 text-2xl text-gray-700">sagen JA!</p>
-        <p className="mt-2 text-lg text-gray-700">20. Juni 2026 | Weingut Piedmont, Konz-Filzen</p>
-        <p className="max-w-3xl mx-auto text-lg text-gray-700">
-          Wir freuen uns riesig, diesen besonderen Tag mit euch zu feiern. Auf
-          dieser Seite findet ihr alle Infos zu Ablauf, Location und Rückmeldung.
-        </p>
-      </Section>
-
-      <main>
-        {/* COUNTDOWN & WELCOME */}
-        <Section>
-            <Countdown />
-            <div className="mt-12 text-center max-w-3xl mx-auto">
-                <h2 className="text-3xl font-playfair text-lavender-dark">Willkommen!</h2>
-                <p className="mt-4 text-gray-700">
-                    Wir können es kaum erwarten, diesen besonderen Tag mit euch zu teilen. 
-                    Hier findet ihr alle wichtigen Informationen rund um unsere Hochzeit. 
-                    Bei Fragen könnt ihr uns jederzeit erreichen unter:{' '}
-                    <a href="tel:01234567890" className="text-lavender-dark font-semibold hover:underline">
-                        0123 / 4567890
-                    </a>.
-                </p>
-            </div>
-        </Section>
         
+        <p className="mt-2 text-lg text-gray-700">
+          05. September 2026 | 14:00 Uhr | Bekond
+        </p>
+        <div className="mt-12 text-center max-w-3xl mx-auto">
+            <h3 className="text-3xl font-playfair text-lavender-dark">Willkommen</h3>
+            <p className="mt-4 text-gray-700">
+              Wir freuen uns auf einen Tag voller Liebe, Freude und gemeinsamer
+              Erinnerungen. <br />
+              Schön, dass wir ihn mit euch teilen dürfen.
+            </p>
+            <p className="mt-4 text-gray-700">
+              Hier auf unserer Website findet ihr alle wichtigen Informationen zu
+              unserer freien Trauung und zur Rückmeldung. <br />
+              Wir zählen die Tage und können es kaum erwarten, gemeinsam mit euch
+              zu lachen, Freudentränen zu vergießen, anzustoßen und zu tanzen.
+            </p>
+            <p className="mt-4 text-gray-700">
+              Für Fragen oder organisatorische Details könnt ihr euch jederzeit
+              auch an uns oder unsere Trauzeugen wenden - die Kontaktdaten findet
+              ihr weiter unten auf dieser Seite.
+            </p>
+          </div>
+          <Countdown />
+      </Section>
+      <main>
         {/* BILDERGALERIE SWIPER */}
         <Section className="bg-white">
              <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Momente</h2>
@@ -152,22 +166,23 @@ export default function WeddingContent() {
                   </video>
                 </SwiperSlide>
                 <SwiperSlide className="flex items-center justify-center"><img src={fabmelring} alt="Gallery 1" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol1} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol2} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol3} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel1} alt="Gallery 5" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel2} alt="Gallery 6" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel3} alt="Gallery 7" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel4} alt="Gallery 8" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel5} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel6} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel7} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel9} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel10} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel11} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel12} alt="Gallery 16" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel13} alt="Gallery 17" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide className="flex items-center justify-center"><img src={fabmel14} alt="Gallery 18" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol3} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel4} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel5} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel6} alt="Gallery 5" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel7} alt="Gallery 6" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel9} alt="Gallery 7" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel10} alt="Gallery 8" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel11} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel12} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel13} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel14} alt="Gallery 12" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel15} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel16} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel17} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel18} alt="Gallery 16" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel19} alt="Gallery 17" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel20} alt="Gallery 18" className="rounded-lg shadow-lg"/></SwiperSlide>
              </Swiper>
         </Section>
 
@@ -178,21 +193,21 @@ export default function WeddingContent() {
                 <div>
                     <h2 className="text-3xl font-playfair text-lavender-dark mb-4">Die Location</h2>
                     <p className="text-gray-700 mb-4">
-                        Unsere Feier findet im wunderschönen Weingut "Piedmont" statt. Es bietet eine idyllische Kulisse für einen unvergesslichen Tag.
+                      Die Orangerie in Bekond ist der Ort, an dem wir unser „Ja“ feiern - umgeben von einem besonderen Ambiente, das diesen Tag unvergesslich macht.
                     </p>
                     <div className="flex items-center gap-2 text-lavender-dark">
                         <MapPin className="w-5 h-5"/>
-                        <span>Weingut Piedmont, Saartalstraße 1, 54329 Konz</span>
+                        <span>Am Weiher 15, 54340 Bekond</span>
                     </div>
                 </div>
                 <div>
-                    <img src={piedmont} alt="Location" className="rounded-lg shadow-xl w-full h-auto"/>
+                    <img src={location} alt="Location" className="rounded-lg shadow-xl w-full h-auto"/>
                 </div>
             </div>
             {/* Google Maps Embed 49.6751955,6.5641451,21 */}
             <div className="mt-12">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1568.0899939849949!2d6.563087381821039!3d49.67525375273531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x410cae1adb0406e5%3A0x15022f374a326239!2sPiedmont!5e0!3m2!1sde!2sde!4v1755531209195!5m2!1sde!2sde" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.47451778903!2d6.803999144418078!3d49.850746878694466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bfd5d1109be22f%3A0x9828108aeb001f24!2sSchloss%20Bekond%20-%20Orangerie!5e0!3m2!1sde!2sde!4v1758318997895!5m2!1sde!2sde" 
                   width="100%" 
                   height="450" 
                   style={{border:0}} 
@@ -212,7 +227,9 @@ export default function WeddingContent() {
                         <img src={person.img} alt={person.name} className="w-32 h-32 rounded-full mx-auto shadow-lg"/>
                         <h3 className="mt-4 font-bold text-lg text-gray-800">{person.name}</h3>
                         <p className="text-lavender-dark">{person.role}</p>
-                        <p className="text-lavender-dark">{person.phone}</p>
+                        <a href={`tel:${person.phone}`} className="text-lavender-dark hover:underline">
+                          {person.phone}
+                        </a>
                     </div>
                 ))}
             </div>
@@ -220,9 +237,9 @@ export default function WeddingContent() {
 
         {/* ZU- ODER ABSAGE */}
         <Section className="bg-white text-center">
-            <h2 className="text-3xl font-playfair text-lavender-dark">Wir freuen uns auf euch!</h2>
+            <h2 className="text-3xl font-playfair text-lavender-dark">Seid ihr dabei?</h2>
             <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
-                Bitte gebt uns bis zum 20. Mai 2026 Bescheid, ob ihr dabei sein könnt, damit wir besser planen können.
+              Sagt uns bis zum 20. Mai 2026 bitte Bescheid - wir müssen die Stücke der Hochzeitstorte einteilen, und ihr wollt doch bestimmt eins abhaben. 🎂😉
             </p>
             <Link to="/register"> 
                 <button className="mt-8 bg-lavender hover:bg-lavender-dark text-white text-lg px-8 py-3 rounded-full shadow-lg transition-colors">
