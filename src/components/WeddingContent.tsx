@@ -25,7 +25,7 @@ import fabmel4 from '../assets/fabmel4.jpg';
 import fabmel5 from '../assets/fabmel5.jpg';
 import fabmel6 from '../assets/fabmel6.jpg';
 import fabmel7 from '../assets/fabmel7.jpg';
-import fabmel8 from '../assets/fabmel8.jpg';
+//import fabmel8 from '../assets/fabmel8.jpg';
 import fabmel9 from '../assets/fabmel9.jpg';
 import fabmel10 from '../assets/fabmel10.jpg';
 import fabmel11 from '../assets/fabmel11.jpg';
@@ -56,9 +56,9 @@ export default function WeddingContent() {
   ];
 
   const groomsmen = [
-    { name: "Luca Müller", role: "Trauzeuge", img: luca },
-    { name: "Paulina Mirkes", role: "Trauzeugin", img: trauzeugin1 },
-    { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2 },
+    { name: "Luca Müller", role: "Trauzeuge", img: luca, phone:"0123 / 4567890" },
+    { name: "Paulina Mirkes", role: "Trauzeugin", img: trauzeugin1, phone:"0123 / 4567890" },
+    { name: "Alena Böwen", role: "Trauzeugin", img: trauzeugin2, phone:"0123 / 4567890" },
     //{ name: "Erika Mustermann", role: "Trauzeugin", img: "https://via.placeholder.com/150" },
     //{ name: "John Doe", role: "Groomsman", img: "https://via.placeholder.com/150" },
     //{ name: "Jane Doe", role: "Bridesmaid", img: "https://via.placeholder.com/150" },
@@ -67,13 +67,13 @@ export default function WeddingContent() {
   return (
     <div className="bg-white">
       {/* NEW TOP SECTION */}
-      <Section className="text-center">
+      <Section className="text-center px-0 sm:px-2 md:px-4">
         <h1 className="text-4xl md:text-6xl font-playfair text-lavender-dark mb-10">
           Melina & Fabio
         </h1>
 
         {/* 3 images side by side */}
-        <div className="grid grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-3 gap-0.5 mb-10">
         <img
           src={fabmel1}
           alt="Bild 1"
@@ -127,13 +127,22 @@ export default function WeddingContent() {
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                autoplay={{ delay: 10000, disableOnInteraction: false }}
                 loop={true}
                 breakpoints={{
                     768: { slidesPerView: 2 },
                     1024: { slidesPerView: 3 },
                 }}
-             >
+                onSlideChange={(swiper) => {
+                  // Get the active slide
+                  const activeSlide = swiper.slides[swiper.activeIndex];
+                  const video = activeSlide.querySelector("video");
+                  if (video) {
+                    video.currentTime = 0; // restart
+                    video.play();          // ensure playback resumes
+                  }
+                }}
+              >
                 <SwiperSlide>
                   <video
                     src={antrag}
@@ -157,7 +166,6 @@ export default function WeddingContent() {
                 <SwiperSlide><img src={fabmel5} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmel6} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmel7} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel8} alt="Gallery 12" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmel9} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmel10} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
                 <SwiperSlide><img src={fabmel11} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
@@ -238,6 +246,7 @@ export default function WeddingContent() {
                         <img src={person.img} alt={person.name} className="w-32 h-32 rounded-full mx-auto shadow-lg"/>
                         <h3 className="mt-4 font-bold text-lg text-gray-800">{person.name}</h3>
                         <p className="text-lavender-dark">{person.role}</p>
+                        <p className="text-lavender-dark">{person.phone}</p>
                     </div>
                 ))}
             </div>
