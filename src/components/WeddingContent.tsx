@@ -17,7 +17,7 @@ import antrag from '../assets/antrag.mp4';
 import fabmelring from '../assets/fabmelring.jpg';
 import luca from '../assets/lucaq.jpg';
 import piedmont from '../assets/piedmont.jpg';
-import fabio from '../assets/fabio.jpg';
+//import fabio from '../assets/fabio.jpg';
 import fabmel1 from '../assets/fabmel1.jpg';
 import fabmel2 from '../assets/fabmel2.jpg';
 import fabmel3 from '../assets/fabmel3.jpg';
@@ -47,13 +47,6 @@ const Section = ({ children, className = '' }: { children: React.ReactNode, clas
 );
 
 export default function WeddingContent() {
-  const schedule = [
-    { time: "15:00 Uhr", event: "Trauung" },
-    { time: "16:00 Uhr", event: "Sektempfang & Fotos" },
-    { time: "17:00 Uhr", event: "Kaffee & Kuchen", img: fabio },
-    { time: "19:00 Uhr", event: "Abendessen" },
-    { time: "21:00 Uhr", event: "Party & Tanz in Temmels" },
-  ];
 
   const groomsmen = [
     { name: "Luca Müller", role: "Trauzeuge", img: luca, phone:"0123 / 4567890" },
@@ -78,17 +71,17 @@ export default function WeddingContent() {
         <img
           src={fabmel1}
           alt="Bild 1"
-          className="rounded-2xl shadow-xl object-contain w-full"
+          className="2xl shadow-xl object-contain w-full"
         />
         <img
           src={fabmel2}
           alt="Bild 2"
-          className="rounded-2xl shadow-xl object-contain w-full"
+          className="2xl shadow-xl object-contain w-full"
         />
         <img
           src={fabmel3}
           alt="Bild 3"
-          className="rounded-2xl shadow-xl object-contain w-full"
+          className="2xl shadow-xl object-contain w-full"
         />
       </div>
       </div>
@@ -121,7 +114,7 @@ export default function WeddingContent() {
         </Section>
         
         {/* BILDERGALERIE SWIPER */}
-        <Section className="bg-lemon-light">
+        <Section className="bg-white">
              <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Momente</h2>
              <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
@@ -178,36 +171,6 @@ export default function WeddingContent() {
              </Swiper>
         </Section>
 
-        {/* TAGESABLAUF SWIPER */}
-        <Section>
-            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Tagesablauf</h2>
-            <Swiper
-                modules={[Navigation]}
-                spaceBetween={20}
-                slidesPerView={2}
-                navigation
-                breakpoints={{
-                    640: { slidesPerView: 3 },
-                    1024: { slidesPerView: 5 },
-                }}
-            >
-                {schedule.map((item, index) => (
-                    <SwiperSlide key={index} className="text-center">
-                    <div className="p-6 border border-lavender rounded-lg bg-lavender-light/30">
-                      {item.img && (
-                        <img
-                          src={item.img}
-                          alt={item.event}
-                          className="w-full h-32 object-cover rounded-lg mb-4"
-                        />
-                      )}
-                      <p className="font-bold text-lg text-lavender-dark">{item.time}</p>
-                      <p className="text-gray-700">{item.event}</p>
-                    </div>
-                  </SwiperSlide>
-                ))}
-            </Swiper>
-        </Section>
         
         {/* LOCATION */}
         <Section className="bg-lavender-light/30">
@@ -256,7 +219,7 @@ export default function WeddingContent() {
         </Section>
 
         {/* ZU- ODER ABSAGE */}
-        <Section className="bg-lemon-light text-center">
+        <Section className="bg-white text-center">
             <h2 className="text-3xl font-playfair text-lavender-dark">Wir freuen uns auf euch!</h2>
             <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
                 Bitte gebt uns bis zum 20. Mai 2026 Bescheid, ob ihr dabei sein könnt, damit wir besser planen können.
