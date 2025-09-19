@@ -72,7 +72,8 @@ export default function WeddingContent() {
           Melina & Fabio
         </h1>
 
-        {/* 3 images side by side */}
+        {/* Edge-to-edge on mobile, padded on desktop */}
+        <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:static md:w-auto md:mx-0">
         <div className="grid grid-cols-3 gap-0.5 mb-10">
         <img
           src={fabmel1}
@@ -89,6 +90,7 @@ export default function WeddingContent() {
           alt="Bild 3"
           className="rounded-2xl shadow-xl object-contain w-full"
         />
+      </div>
       </div>
 
 
@@ -123,7 +125,7 @@ export default function WeddingContent() {
              <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Momente</h2>
              <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={30}
+                spaceBetween={10}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
@@ -133,6 +135,7 @@ export default function WeddingContent() {
                     768: { slidesPerView: 2 },
                     1024: { slidesPerView: 3 },
                 }}
+                className="h-[70vh]" // control height of carousel
                 onSlideChange={(swiper) => {
                   // Get the active slide
                   const activeSlide = swiper.slides[swiper.activeIndex];
@@ -143,35 +146,35 @@ export default function WeddingContent() {
                   }
                 }}
               >
-                <SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center">
                   <video
                     src={antrag}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="rounded-lg shadow-lg w-full h-auto object-cover"
+                    className="rounded-lg shadow-lg max-h-full max-w-full object-contain"
                   >
                     Your browser does not support the video tag.
                   </video>
                 </SwiperSlide>
-                <SwiperSlide><img src={fabmelring} alt="Gallery 1" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelcol1} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelcol2} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmelcol3} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel1} alt="Gallery 5" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel2} alt="Gallery 6" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel3} alt="Gallery 7" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel4} alt="Gallery 8" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel5} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel6} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel7} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel9} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel10} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel11} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel12} alt="Gallery 16" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel13} alt="Gallery 17" className="rounded-lg shadow-lg"/></SwiperSlide>
-                <SwiperSlide><img src={fabmel14} alt="Gallery 18" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmelring} alt="Gallery 1" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol1} alt="Gallery 2" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol2} alt="Gallery 3" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmelcol3} alt="Gallery 4" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel1} alt="Gallery 5" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel2} alt="Gallery 6" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel3} alt="Gallery 7" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel4} alt="Gallery 8" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel5} alt="Gallery 9" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel6} alt="Gallery 10" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel7} alt="Gallery 11" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel9} alt="Gallery 13" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel10} alt="Gallery 14" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel11} alt="Gallery 15" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel12} alt="Gallery 16" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel13} alt="Gallery 17" className="rounded-lg shadow-lg"/></SwiperSlide>
+                <SwiperSlide className="flex items-center justify-center"><img src={fabmel14} alt="Gallery 18" className="rounded-lg shadow-lg"/></SwiperSlide>
              </Swiper>
         </Section>
 
