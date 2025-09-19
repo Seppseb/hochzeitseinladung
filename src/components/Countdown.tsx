@@ -32,7 +32,7 @@ const Countdown = () => {
 
   const timerComponents = Object.entries(timeLeft).map(([interval, value]) => (
     <div key={interval} className="text-center">
-      <div className="text-4xl md:text-6xl font-playfair text-lavender-dark">
+      <div className="text-4xl md:text-6xl font-playfair text-brownNew">
         {(value as Object).toString().padStart(2, '0')}
       </div>
       <div className="text-sm uppercase tracking-wider">{interval}</div>

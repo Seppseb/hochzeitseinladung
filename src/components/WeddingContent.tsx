@@ -65,14 +65,14 @@ export default function WeddingContent() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#f9f4fb]">
       {/* NEW TOP SECTION */}
       <Section className="text-center px-0 sm:px-2 md:px-4">
-        <h1 className="text-4xl md:text-6xl font-playfair font-bold text-lavender-dark mb-10">
-          Melina & Fabio
-        </h1>
+      <h1 className="text-4xl md:text-6xl font-script text-brownNew mb-10">
+        Melina & Fabio
+      </h1>
 
-        <h2 className="mt-4 text-2xl md:text-3xl font-playfair text-lavender-dark">
+        <h2 className="mt-4 text-2xl md:text-3xl font-playfair text-brownNew">
           Zwei Herzen, ein Ja
         </h2>
 
@@ -106,7 +106,7 @@ export default function WeddingContent() {
           05. September 2026 | 14:00 Uhr | Bekond
         </p>
         <div className="mt-12 text-center max-w-3xl mx-auto">
-            <h3 className="text-3xl font-playfair text-lavender-dark">Willkommen</h3>
+            <h3 className="text-3xl font-playfair text-brownNew">Willkommen</h3>
             <p className="mt-4 text-gray-700">
               Wir freuen uns auf einen Tag voller Liebe, Freude und gemeinsamer
               Erinnerungen. <br />
@@ -124,12 +124,14 @@ export default function WeddingContent() {
               ihr weiter unten auf dieser Seite.
             </p>
           </div>
-          <Countdown />
+      </Section>
+      <Section>
+      <Countdown />
       </Section>
       <main>
         {/* BILDERGALERIE SWIPER */}
-        <Section className="bg-white">
-             <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Momente</h2>
+        <Section className="bg-[#f9f4fb]">
+             <h2 className="text-3xl font-playfair text-center text-brownNew mb-8">Unsere Momente</h2>
              <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={10}
@@ -188,14 +190,14 @@ export default function WeddingContent() {
 
         
         {/* LOCATION */}
-        <Section className="bg-lavender-light/30">
+        <Section className="bg-[#f9f4fb]">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 className="text-3xl font-playfair text-lavender-dark mb-4">Die Location</h2>
+                    <h2 className="text-3xl font-playfair text-brownNew mb-4">Die Location</h2>
                     <p className="text-gray-700 mb-4">
                       Die Orangerie in Bekond ist der Ort, an dem wir unser „Ja“ feiern - umgeben von einem besonderen Ambiente, das diesen Tag unvergesslich macht.
                     </p>
-                    <div className="flex items-center gap-2 text-lavender-dark">
+                    <div className="flex items-center gap-2 text-brownNew">
                         <MapPin className="w-5 h-5"/>
                         <span>Am Weiher 15, 54340 Bekond</span>
                     </div>
@@ -220,14 +222,14 @@ export default function WeddingContent() {
 
         {/* TRAUZEUGEN */}
         <Section>
-            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Unsere Trauzeugen & Helfer</h2>
+            <h2 className="text-3xl font-playfair text-center text-brownNew mb-8">Unsere Trauzeugen & Helfer</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 {groomsmen.map((person, index) => (
                     <div key={index}>
                         <img src={person.img} alt={person.name} className="w-32 h-32 rounded-full mx-auto shadow-lg"/>
                         <h3 className="mt-4 font-bold text-lg text-gray-800">{person.name}</h3>
-                        <p className="text-lavender-dark">{person.role}</p>
-                        <a href={`tel:${person.phone}`} className="text-lavender-dark hover:underline">
+                        <p className="text-brownNew">{person.role}</p>
+                        <a href={`tel:${person.phone}`} className="text-brownNew hover:underline">
                           {person.phone}
                         </a>
                     </div>
@@ -236,8 +238,8 @@ export default function WeddingContent() {
         </Section>
 
         {/* ZU- ODER ABSAGE */}
-        <Section className="bg-white text-center">
-            <h2 className="text-3xl font-playfair text-lavender-dark">Seid ihr dabei?</h2>
+        <Section className="bg-[#f9f4fb] text-center">
+            <h2 className="text-3xl font-playfair text-brownNew">Seid ihr dabei?</h2>
             <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
               Sagt uns bis zum 20. Mai 2026 bitte Bescheid - wir müssen die Stücke der Hochzeitstorte einteilen, und ihr wollt doch bestimmt eins abhaben. 🎂😉
             </p>
@@ -250,7 +252,7 @@ export default function WeddingContent() {
 
         {/* HÄUFIG GESTELLTE FRAGEN */}
         <Section>
-            <h2 className="text-3xl font-playfair text-center text-lavender-dark mb-8">Häufig gestellte Fragen</h2>
+            <h2 className="text-3xl font-playfair text-center text-brownNew mb-8">Häufig gestellte Fragen</h2>
             <div className="max-w-3xl mx-auto">
                 <AccordionItem 
                     question="Was ist der Dresscode?" 

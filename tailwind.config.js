@@ -11,6 +11,11 @@ export default {
           lavender: "#6b46c1", // darker lavender
           lemon: "#d97706",    // darker lemon
         },
+        'brownNew': {
+          DEFAULT: '#483c36',
+        },
+        lavenderNew: '#f9f4fb',
+        lavenderDarkNew: '#f4eefa',
         'lavender': {
           //light: '#E6E6FA', // Light Lavender
           //light: '#e9dbf3', // Light Lavender
@@ -33,7 +38,7 @@ export default {
       },
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
-        heading: ['"Playfair Display"', 'serif'],
+        script: ['"Great Vibes"', 'cursive'],
         body: ['"Lato"', 'sans-serif'],
       }
     },
