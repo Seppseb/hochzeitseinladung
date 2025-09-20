@@ -32,8 +32,12 @@ export default function AccordionItem({ question, answer }: AccordionItemProps) 
           if (question.includes("Dresscode")) {
             return (
               <div className="flex gap-3 mt-4">
-                <div className="w-8 h-8 rounded-full bg-wedding-lavender shadow-md"></div>
-                <div className="w-8 h-8 rounded-full bg-wedding-lemon shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#c8a2c9] shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#d7bfd7] shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#e6daf0] shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#f6e27f] shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#fbe8a6] shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-[#fff4b2] shadow-md"></div>
               </div>
             )
           }

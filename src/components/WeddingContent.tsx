@@ -252,15 +252,25 @@ export default function WeddingContent() {
 
         {/* HÄUFIG GESTELLTE FRAGEN */}
         <Section>
-            <h2 className="text-3xl font-playfair text-center text-brownNew mb-8">Häufig gestellte Fragen</h2>
+            <h2 className="text-3xl font-playfair text-center text-brownNew mb-8">Hochzeitsinfos</h2>
             <div className="max-w-3xl mx-auto">
                 <AccordionItem 
                     question="Was ist der Dresscode?" 
-                    answer="Kein Dresscode - kommt einfach so, wie ihr euch wohlfühlt. Wenn ihr mögt, lasst euch gern von Lavendel, Lemon & Love inspirieren."
+                    answer="Kein Dresscode - kommt einfach so, wie ihr euch wohlfühlt. Wenn ihr mögt, lasst euch gern von Lavendel & Lemon inspirieren."
                 />
                 <AccordionItem 
                     question="Gibt es eine Geschenkeliste?" 
-                    answer="Das größte Geschenk ist euer Dabeisein. Wenn ihr uns dennoch eine Freude machen wollt, lasst unsere Flitterwochenkasse leise klingeln."
+                    answer="Das allerbeste Geschenk ist, dass ihr mit uns feiert! 
+                    Wenn ihr uns trotzdem etwas schenken möchtet, freuen wir uns riesig über einen kleinen Beitrag für unsere Hochzeitskasse. Keine Sorge - ihr müsst nichts Großes oder Aufwendiges basteln, eine Karte reicht völlig aus.
+                    Wir können's kaum erwarten und freuen uns mega auf euch!"
+                />
+                <AccordionItem 
+                    question="Darf man Fotos machen?" 
+                    answer="Während der Trauung bitten wir darum, die Handys in der Tasche zu lassen - wir haben nämlich die beste Fotografin auf der Welt: Simone Kasper. (Und ganz wichtig: Godi muss ihr Handy unbedingt zuhause lassen.)"
+                />
+                <AccordionItem 
+                    question="Gibt es ein Shuttle von der Location?" 
+                    answer="Ja, es wird ein Shuttle geben! Weitere Infos dazu folgen."
                 />
             </div>
         </Section>
