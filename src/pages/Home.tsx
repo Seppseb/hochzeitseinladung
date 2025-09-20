@@ -49,9 +49,9 @@ export default function Home() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-lavender-light flex items-center justify-center p-6">
+      <div className="min-h-screen bg-[#f9f4fb] flex items-center justify-center p-6">
         <div className="max-w-md w-full shadow-2xl rounded-2xl p-8 bg-white text-center">
-          <h1 className="text-3xl font-playfair text-lavender-dark">Einladung zur Hochzeit</h1>
+          <h1 className="text-3xl font-playfair text-brownNew">Einladung zur Hochzeit</h1>
           <p className="mt-4 text-gray-600">Bitte gebt das Passwort ein, um die Details zu sehen.</p>
           <form onSubmit={handlePasswordSubmit} className="mt-6 space-y-4">
             <input
@@ -64,7 +64,7 @@ export default function Home() {
             <button
               type="submit"
               disabled={isChecking}
-              className="w-full bg-lavender hover:bg-lavender-dark text-white text-lg px-6 py-2 rounded-full transition-colors"
+              className="w-full bg-[#f9f4fb] hover:bg-lavender-dark text-white text-lg px-6 py-2 rounded-full transition-colors"
             >
               {isChecking ? 'Prüfe...' : 'Enter'}
             </button>
