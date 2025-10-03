@@ -1,5 +1,6 @@
 // src/components/WeddingContent.tsx
 import { MapPin } from 'lucide-react';
+import { motion } from "framer-motion";
 import AccordionItem from './AccordionItem.js';
 import Countdown from './Countdown.js';
 
@@ -44,6 +45,11 @@ import fabmel20 from '../assets/fabmel20.jpg';
 import fabmelcol3 from '../assets/fabmelcol3.jpg';
 import trauzeugin1 from '../assets/trauzeugin1q.jpg';
 import trauzeugin2 from '../assets/trauzeugin2q.jpg';
+
+import lav1 from '../assets/lav1s.svg';
+import lav2 from '../assets/lav2s.svg';
+import lemon from '../assets/lemons.svg';
+
 import { Link } from 'react-router-dom';
 
 
@@ -68,36 +74,49 @@ export default function WeddingContent() {
     <div className="bg-[#f9f4fb]">
       {/* NEW TOP SECTION */}
       <Section className="text-center px-0 sm:px-2 md:px-4">
-      <h1 className="text-4xl md:text-6xl font-script text-brownNew mb-10">
-        Melina & Fabio
-      </h1>
-
+      <div className="flex items-center justify-center gap-4">
+        <img src={lav1} alt="decor" className="w-32 h-32" />
+        <h1 className="text-4xl md:text-6xl font-script text-brownNew">
+          Melina & Fabio
+        </h1>
+        <img src={lav2} alt="decor" className="w-32 h-32" />
+      </div>
         <h2 className="mt-4 text-2xl md:text-3xl font-playfair text-brownNew">
           Zwei Herzen, ein Ja
         </h2>
 
-
-        
         {/* Edge-to-edge on mobile, padded on desktop */}
         <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:static md:w-auto md:mx-0">
         <div className="grid grid-cols-3 gap-0.5 mb-10">
-        <img
-          src={fabmel1}
-          alt="Bild 1"
-          className="2xl shadow-xl object-contain w-full"
-        />
-        <img
-          src={fabmel2}
-          alt="Bild 2"
-          className="2xl shadow-xl object-contain w-full"
-        />
-        <img
-          src={fabmel3}
-          alt="Bild 3"
-          className="2xl shadow-xl object-contain w-full"
-        />
-      </div>
-      </div>
+          <motion.img
+            src={fabmel1}
+            alt="Bild 1"
+            className="2xl shadow-xl object-contain w-full"
+            initial={{ opacity: 0, y: 100 }}       // Start hidden, below
+            whileInView={{ opacity: 1, y: 0 }}    // Animate to visible
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          />
+          <motion.img
+            src={fabmel2}
+            alt="Bild 2"
+            className="2xl shadow-xl object-contain w-full"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}  // small delay for staggered effect
+            viewport={{ once: true }}
+          />
+          <motion.img
+            src={fabmel3}
+            alt="Bild 3"
+            className="2xl shadow-xl object-contain w-full"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          />
+        </div>
+        </div>
 
 
         {/* Text under images */}
@@ -145,7 +164,7 @@ export default function WeddingContent() {
                     1024: { slidesPerView: 3 },
                 }}
                 className="h-[70vh]" // control height of carousel
-                onSlideChange={(swiper) => {
+                onSlideChange={(swiper: any) => {
                   // Get the active slide
                   const activeSlide = swiper.slides[swiper.activeIndex];
                   const video = activeSlide.querySelector("video");
@@ -275,6 +294,23 @@ export default function WeddingContent() {
             </div>
         </Section>
       </main>
+      {/* Decorative symbol */}
+      <img
+        src={lav1}
+        alt="decor"
+        className="absolute top-0 left-5 w-64 h-64 opacity-0 pointer-events-none"
+      />
+      <img
+        src={lav2}
+        alt="decor"
+        className="absolute bottom-4 left-8 w-64 h-64 opacity-0 pointer-events-none"
+      />
+      <img
+        src={lemon}
+        alt="decor"
+        className="absolute bottom-6 right-12 w-64 h-64 opacity-0 pointer-events-none"
+      />
     </div>
+    
   );
 }
