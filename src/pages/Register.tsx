@@ -46,7 +46,7 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-[#f9f4fb] flex items-start justify-center p-6 pt-12">
   <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-8">
-    <h2 className="text-3xl font-playfair text-brownNew mb-6 text-center">Rückmeldung</h2>
+    <h2 className="text-3xl font-bodoni text-brownNew mb-6 text-center">Rückmeldung</h2>
 
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>

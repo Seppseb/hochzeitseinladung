@@ -103,7 +103,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#f9f4fb] flex items-start justify-center p-6">
   <div className="w-full max-w-6xl bg-white shadow-2xl rounded-2xl p-8">
-    <h2 className="text-3xl font-playfair text-lavender-dark mb-6 text-center">Admin Dashboard</h2>
+    <h2 className="text-3xl font-bodoni text-lavender-dark mb-6 text-center">Admin Dashboard</h2>
 
     {!authorized && (
       <div className="mb-6 text-center">

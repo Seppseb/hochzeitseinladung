@@ -32,7 +32,7 @@ const Countdown = () => {
 
   const timerComponents = Object.entries(timeLeft).map(([interval, value]) => (
     <div key={interval} className="text-center">
-      <div className="text-4xl md:text-6xl font-playfair text-brownNew">
+      <div className="text-4xl md:text-6xl font-bodoni text-brownNew">
         {(value as Object).toString().padStart(2, '0')}
       </div>
       <div className="text-sm uppercase tracking-wider">{interval}</div>
@@ -41,7 +41,7 @@ const Countdown = () => {
 
   return (
     <div className="flex justify-center gap-4 md:gap-8">
-      {timerComponents.length ? timerComponents : <span className="text-2xl font-playfair text-love-pink">Der große Tag ist da!</span>}
+      {timerComponents.length ? timerComponents : <span className="text-2xl font-bodoni text-love-pink">Der große Tag ist da!</span>}
     </div>
   );
 };

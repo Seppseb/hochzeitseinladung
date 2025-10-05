@@ -38,6 +38,8 @@ export default {
       },
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
+        parisienne: ['Parisienne', 'cursive'],
+        bodoni: ['"Libre Bodoni"', 'serif'],
         script: ['"Great Vibes"', 'cursive'],
         body: ['"Lato"', 'sans-serif'],
       }
