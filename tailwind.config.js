@@ -40,6 +40,7 @@ export default {
         playfair: ['"Playfair Display"', 'serif'],
         parisienne: ['Parisienne', 'cursive'],
         bodoni: ['"Libre Bodoni"', 'serif'],
+        raleway: ['"raleway"', 'serif'],
         script: ['"Great Vibes"', 'cursive'],
         body: ['"Lato"', 'sans-serif'],
       }

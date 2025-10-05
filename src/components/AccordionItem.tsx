@@ -16,9 +16,9 @@ export default function AccordionItem({ question, answer }: AccordionItemProps) 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center text-left py-4 px-2"
       >
-        <h3 className="text-lg font-medium text-gray-800">{question}</h3>
+        <h3 className="text-lg font-bodoni font-medium text-gray-800">{question}</h3>
         <ChevronDown
-          className={`w-6 h-6 text-lavender-dark transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-6 h-6 font-bodoni text-lavender-dark transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
       <div
@@ -26,7 +26,7 @@ export default function AccordionItem({ question, answer }: AccordionItemProps) 
           isOpen ? 'max-h-96' : 'max-h-0'
         }`}
       >
-        <p className="p-4 text-gray-600 bg-lavender-light/30 rounded-b-lg">
+        <p className="whitespace-pre-line p-4 font-bodoni text-gray-600 bg-lavender-light/30 rounded-b-lg">
           {answer}
           {(() => {
           if (question.includes("Dresscode")) {

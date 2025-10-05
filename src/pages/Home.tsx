@@ -17,7 +17,7 @@ export default function Home() {
   const [error, setError] = useState('');
   const [isChecking, setIsChecking] = useState(false);
 
-  const correctPasswordHash = "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08";
+  const correctPasswordHash = "130a4f081b1264e12dac6b1e28a61fe9ee388692fe26021fe0e4242a164f4f90";
 
   const checkPassword = async (passwordp : string) => {
     setIsChecking(true);

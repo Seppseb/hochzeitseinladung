@@ -75,13 +75,14 @@ export default function WeddingContent() {
       {/* NEW TOP SECTION */}
       <Section className="text-center px-0 sm:px-2 md:px-4">
       <div className="flex items-center justify-center gap-4">
-        <h1 className="text-4xl md:text-6xl font-parisienne text-brownNew">
+        <h1 className="text-4xl md:text-6xl font-bodoni text-brownNew">
           Melina & Fabio
         </h1>
       </div>
-        <h2 className="mt-4 text-2xl md:text-3xl font-bodoni text-brownNew">
+        <p className="mt-2 font-bodoni text-base text-gray-700">
           Zwei Herzen, ein Ja
-        </h2>
+        </p>
+        <br />
 
         {/* Edge-to-edge on mobile, padded on desktop */}
         <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen md:static md:w-auto md:mx-0">
@@ -92,7 +93,7 @@ export default function WeddingContent() {
             className="2xl shadow-xl object-contain w-full"
             initial={{ opacity: 0, y: 100 }}       // Start hidden, below
             whileInView={{ opacity: 1, y: 0 }}    // Animate to visible
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 2 }}
             viewport={{ once: true }}
           />
           <motion.img
@@ -101,7 +102,7 @@ export default function WeddingContent() {
             className="2xl shadow-xl object-contain w-full"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}  // small delay for staggered effect
+            transition={{ duration: 2, delay: 0.2 }}  // small delay for staggered effect
             viewport={{ once: true }}
           />
           <motion.img
@@ -110,7 +111,7 @@ export default function WeddingContent() {
             className="2xl shadow-xl object-contain w-full"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 2, delay: 0.4 }}
             viewport={{ once: true }}
           />
         </div>
@@ -119,24 +120,25 @@ export default function WeddingContent() {
 
         {/* Text under images */}
         
-        <p className="mt-2 text-lg text-gray-700">
+        <p className="mt-2 font-bodoni text-lg text-gray-700">
           05. September 2026 | 14:00 Uhr | Bekond
         </p>
         <div className="mt-12 text-center max-w-3xl mx-auto">
         <img src={lav1} alt="decor" className="w-32 h-32 mx-auto" />
+        <br />
             <h3 className="text-3xl font-bodoni text-brownNew">Willkommen</h3>
-            <p className="mt-4 text-gray-700">
+            <p className="mt-4 font-bodoni text-gray-700">
               Wir freuen uns auf einen Tag voller Liebe, Freude und gemeinsamer
               Erinnerungen. <br />
               Schön, dass wir ihn mit euch teilen dürfen.
             </p>
-            <p className="mt-4 text-gray-700">
+            <p className="mt-4 font-bodoni text-gray-700">
               Hier auf unserer Website findet ihr alle wichtigen Informationen zu
               unserer freien Trauung und zur Rückmeldung. <br />
               Wir zählen die Tage und können es kaum erwarten, gemeinsam mit euch
               zu lachen, Freudentränen zu vergießen, anzustoßen und zu tanzen.
             </p>
-            <p className="mt-4 text-gray-700">
+            <p className="mt-4 font-bodoni text-gray-700">
               Für Fragen oder organisatorische Details könnt ihr euch jederzeit
               auch an uns oder unsere Trauzeugen wenden - die Kontaktdaten findet
               ihr weiter unten auf dieser Seite.
@@ -212,12 +214,12 @@ export default function WeddingContent() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 className="text-3xl font-bodoni text-brownNew mb-4">Die Location</h2>
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-gray-700 font-bodoni mb-4">
                       Die Orangerie in Bekond ist der Ort, an dem wir unser „Ja“ feiern - umgeben von einem besonderen Ambiente, das diesen Tag unvergesslich macht.
                     </p>
                     <div className="flex items-center gap-2 text-brownNew">
                         <MapPin className="w-5 h-5"/>
-                        <span>Am Weiher 15, 54340 Bekond</span>
+                        <span className='font-bodoni'>Am Weiher 15, 54340 Bekond</span>
                     </div>
                 </div>
                 <div>
@@ -241,16 +243,21 @@ export default function WeddingContent() {
         {/* TRAUZEUGEN */}
         <Section>
             <h2 className="text-3xl font-bodoni text-center text-brownNew mb-8">Unsere Trauzeugen</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-8 text-center">
                 {groomsmen.map((person, index) => (
-                    <div key={index}>
+                    <motion.div
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 2 }}
+                    viewport={{ once: true }}
+                     key={index}>
                         <img src={person.img} alt={person.name} className="w-32 h-32 rounded-full mx-auto shadow-lg"/>
-                        <h3 className="mt-4 font-bold text-lg text-gray-800">{person.name}</h3>
-                        <p className="text-brownNew">{person.role}</p>
-                        <a href={`tel:${person.phone}`} className="text-brownNew hover:underline">
+                        <h3 className="mt-4 font-bodoni text-lg text-gray-800">{person.name}</h3>
+                        <p className="text-brownNew font-bodoni">{person.role}</p>
+                        <a href={`tel:${person.phone}`} className="text-brownNew font-bodoni hover:underline">
                           {person.phone}
                         </a>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </Section>
@@ -258,11 +265,11 @@ export default function WeddingContent() {
         {/* ZU- ODER ABSAGE */}
         <Section className="bg-[#f9f4fb] text-center">
             <h2 className="text-3xl font-bodoni text-brownNew">Seid ihr dabei?</h2>
-            <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
+            <p className="mt-4 font-bodoni text-gray-700 max-w-2xl mx-auto">
               Sagt uns bis zum 20. Mai 2026 bitte Bescheid - wir müssen die Stücke der Hochzeitstorte einteilen, und ihr wollt doch bestimmt eins abhaben. 🎂😉
             </p>
             <Link to="/register"> 
-                <button className="mt-8 bg-lavender hover:bg-lavender-dark text-white text-lg px-8 py-3 rounded-full shadow-lg transition-colors">
+                <button className="mt-8 font-bodoni bg-lavender hover:bg-lavender-dark text-white text-lg px-8 py-3 rounded-full shadow-lg transition-colors">
                     Zur Rückmeldung
                 </button>
             </Link>
@@ -278,7 +285,7 @@ export default function WeddingContent() {
                 />
                 <AccordionItem 
                     question="Gibt es eine Geschenkeliste?" 
-                    answer="Das allerbeste Geschenk ist, dass ihr mit uns feiert! 
+                    answer="Das allerbeste Geschenk ist, dass ihr mit uns feiert!
                     Wenn ihr uns trotzdem etwas schenken möchtet, freuen wir uns riesig über einen kleinen Beitrag für unsere Hochzeitskasse. Keine Sorge - ihr müsst nichts Großes oder Aufwendiges basteln, eine Karte reicht völlig aus.
                     Wir können's kaum erwarten und freuen uns mega auf euch!"
                 />
