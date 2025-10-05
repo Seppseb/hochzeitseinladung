@@ -286,8 +286,7 @@ export default function WeddingContent() {
                 <AccordionItem 
                     question="Gibt es eine Geschenkeliste?" 
                     answer="Das allerbeste Geschenk ist, dass ihr mit uns feiert!
-                    Wenn ihr uns trotzdem etwas schenken möchtet, freuen wir uns riesig über einen kleinen Beitrag für unsere Hochzeitskasse. Keine Sorge - ihr müsst nichts Großes oder Aufwendiges basteln, eine Karte reicht völlig aus.
-                    Wir können's kaum erwarten und freuen uns mega auf euch!"
+                    Wenn ihr uns trotzdem etwas schenken möchtet, freuen wir uns riesig über einen kleinen Beitrag für unsere Hochzeitskasse. Keine Sorge - ihr müsst nichts Großes oder Aufwendiges basteln, eine Karte reicht völlig aus."
                 />
                 <AccordionItem 
                     question="Darf man Fotos machen?" 
