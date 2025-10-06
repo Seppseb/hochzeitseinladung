@@ -64,9 +64,9 @@ export default function Home() {
             <button
               type="submit"
               disabled={isChecking}
-              className="w-full bg-[#f9f4fb] hover:bg-lavender-dark text-white text-lg px-6 py-2 rounded-full transition-colors"
+              className="w-full bg-[#f9f4fb] hover:bg-lavender-dark text-brownNew text-lg px-6 py-2 rounded-full transition-colors"
             >
-              {isChecking ? 'Prüfe...' : 'Enter'}
+              {isChecking ? 'Prüfe...' : 'Weiter'}
             </button>
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           </form>
