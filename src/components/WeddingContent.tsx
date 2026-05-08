@@ -19,6 +19,7 @@ import fabmelring from '../assets/fabmelring.jpg';
 import luca from '../assets/lucaq.jpg';
 //import piedmont from '../assets/piedmont.jpg';
 import location from '../assets/location.jpg';
+import ablauf from '../assets/ablauf.jpg';
 //import fabio from '../assets/fabio.jpg';
 import fabmel1 from '../assets/fabmel1.jpg';
 import fabmel2 from '../assets/fabmel2.jpg';
@@ -149,6 +150,16 @@ export default function WeddingContent() {
       <Countdown />
       </Section>
       <main>
+        {/* ABLAUF */}
+        <Section className="bg-[#f9f4fb]">
+            <div className="flex justify-center">
+                <img
+                    src={ablauf}
+                    alt="Ablauf"
+                    className="rounded-lg shadow-xl w-full max-w-2xl h-auto"
+                />
+            </div>
+        </Section>
         {/* BILDERGALERIE SWIPER */}
         <Section className="bg-[#f9f4fb]">
              <h2 className="text-3xl font-bodoni text-center text-brownNew mb-8">Unsere Momente</h2>
